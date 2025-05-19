@@ -18,23 +18,23 @@
       overflow-x: hidden;
     }
 
-    /* Star Twinkle */
+    /* Star Twinkle (5× size) */
     .star {
       position: absolute;
-      font-size: 1.5rem;
+      font-size: 7.5rem;
       color: rgba(80,80,80,0.8);
-      filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 0 12px rgba(0,0,0,0.2));
       user-select: none;
       animation: twinkle 3s infinite ease-in-out;
     }
     @keyframes twinkle {
       0%,100% { opacity: 0.7; transform: scale(1); }
-      50%    { opacity: 1;   transform: scale(1.4); }
+      50%      { opacity: 1;   transform: scale(1.2); }
     }
-    .star:nth-child(1){ top: 12%; left: 18%; }
-    .star:nth-child(2){ top: 25%; left: 78%; font-size:1.8rem; }
-    .star:nth-child(3){ top: 55%; left: 42%; font-size:1.2rem; }
-    .star:nth-child(4){ top: 65%; left: 70%; font-size:1.6rem; }
+    .star:nth-of-type(1) { top: 12%; left: 18%; font-size: 7.5rem; }
+    .star:nth-of-type(2) { top: 25%; left: 78%; font-size: 9rem; }
+    .star:nth-of-type(3) { top: 55%; left: 42%; font-size: 6rem; }
+    .star:nth-of-type(4) { top: 65%; left: 70%; font-size: 8rem; }
 
     /* Navigation */
     nav {
@@ -97,12 +97,13 @@
     }
     .card h3 { margin-bottom:0.5rem; font-size:1.4rem; font-weight:700; }
     .card p { font-size:1rem; color:#555; margin:0; }
-    .card:nth-child(1) { background: linear-gradient(135deg, #ffd6e8, #ffe3f2); }
-    .card:nth-child(2) { background: linear-gradient(135deg, #d6f0ff, #e3f7ff); }
-    .card:nth-child(3) { background: linear-gradient(135deg, #d6ffd6, #e3ffe3); }
-    .card:nth-child(4) { background: linear-gradient(135deg, #fff1d6, #fff8e3); }
+    .card:nth-of-type(1) { background: linear-gradient(135deg, #ffd6e8, #ffe3f2); }
+    .card:nth-of-type(2) { background: linear-gradient(135deg, #d6f0ff, #e3f7ff); }
+    .card:nth-of-type(3) { background: linear-gradient(135deg, #d6ffd6, #e3ffe3); }
+    .card:nth-of-type(4) { background: linear-gradient(135deg, #fff1d6, #fff8e3); }
 
-    .hidden { display: none; }
+    /* Hidden class */
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -127,7 +128,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h1><span class="lang-de">Hi. Ich bin Mehdi.<br>Ein zukünftiger IT-Spezialist.</span><span class="lang-en hidden">Hi. I'm Mehdi.<br>A future IT specialist.</span></h1>
+    <h1><span class="lang-de">Hi. Ich bin Mehdi,<br>ein Ausbildungskandidat.</span><span class="lang-en hidden">Hi. I'm Mehdi,<br>an Ausbildung candidate.</span></h1>
     <p><span class="lang-de">Ich liebe es, Netzwerke, Systeme und echte IT-Probleme zu lösen.</span><span class="lang-en hidden">I love working with networks, systems, and solving real-world IT problems.</span></p>
     <button onclick="document.getElementById('work').scrollIntoView()"><span class="lang-de">Projekte ansehen</span><span class="lang-en hidden">View Projects</span></button>
   </section>
@@ -143,9 +144,29 @@
   </section>
 
   <script>
+    // On load, apply saved language
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('lang');
+      if (saved === 'en') {
+        document.documentElement.lang = 'en';
+        document.querySelectorAll('.lang-de').forEach(e => e.classList.add('hidden'));
+        document.querySelectorAll('.lang-en').forEach(e => e.classList.remove('hidden'));
+      }
+    });
+    // Toggle language
     function switchLang() {
-      document.querySelectorAll('.lang-de').forEach(e=>e.classList.toggle('hidden'));
-      document.querySelectorAll('.lang-en').forEach(e=>e.classList.toggle('hidden'));
+      const isDe = document.documentElement.lang === 'de';
+      if (isDe) {
+        document.documentElement.lang = 'en';
+        localStorage.setItem('lang', 'en');
+        document.querySelectorAll('.lang-de').forEach(e => e.classList.add('hidden'));
+        document.querySelectorAll('.lang-en').forEach(e => e.classList.remove('hidden'));
+      } else {
+        document.documentElement.lang = 'de';
+        localStorage.setItem('lang', 'de');
+        document.querySelectorAll('.lang-en').forEach(e => e.classList.add('hidden'));
+        document.querySelectorAll('.lang-de').forEach(e => e.classList.remove('hidden'));
+      }
     }
   </script>
 </body>
