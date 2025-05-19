@@ -1,18 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mehdi Err — IT Portfolio</title>
-
-  <!-- 1) Import Poppins from Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap"
-    rel="stylesheet"
-  />
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    /* 2) Base reset & body styles */
     * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: 'Poppins', sans-serif;
@@ -23,20 +16,6 @@
       overflow-x: hidden;
     }
 
-    /* 3) Tiny stars scattered around the hero */
-    .star {
-      position: absolute;
-      font-size: 1rem;
-      color: rgba(255,255,255,0.8);
-      user-select: none;
-    }
-    /* example positions — feel free to tweak */
-    .star:nth-child(1){ top: 10%; left: 15%; }
-    .star:nth-child(2){ top: 20%; left: 80%; font-size:1.2rem; }
-    .star:nth-child(3){ top: 50%; left: 40%; font-size:0.8rem; }
-    .star:nth-child(4){ top: 60%; left: 75%; font-size:1rem; }
-
-    /* 4) Nav bar pills */
     nav {
       display: flex;
       justify-content: center;
@@ -57,16 +36,32 @@
       color: #111;
     }
 
-    /* 5) Hero title & subtitle */
+    .lang-switcher {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .lang-switcher button {
+      background: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
     .hero {
       text-align: center;
       padding: 4rem 1rem 2rem;
     }
+
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 800;
       line-height: 1.1;
     }
+
     .hero p {
       margin-top: 1rem;
       font-size: 1.2rem;
@@ -74,10 +69,8 @@
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      color: #333;
     }
 
-    /* 6) Project cards grid */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -86,81 +79,104 @@
       max-width: 1000px;
       margin: 0 auto;
     }
+
     .card {
-      position: relative;
       background: white;
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       padding: 2rem 1rem;
       text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-    }
-    .card h3 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      font-size: 1rem;
-      color: #555;
+      transition: transform 0.3s;
     }
 
-    /* 7) Pastel accents on each card */
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 { font-size: 1.4rem; font-weight: 600; }
+    .card p { font-size: 1rem; color: #555; }
+
     .card:nth-child(1) { background: #ffe3e3; }
     .card:nth-child(2) { background: #e3f7ff; }
     .card:nth-child(3) { background: #e8ffe3; }
     .card:nth-child(4) { background: #fff3e3; }
+
+    .hidden { display: none; }
   </style>
 </head>
-
 <body>
 
-  <!-- 3) Star decorations -->
-  <div class="star">✦</div>
-  <div class="star">✧</div>
-  <div class="star">✦</div>
-  <div class="star">✧</div>
+  <!-- 🌐 Language Switch -->
+  <div class="lang-switcher">
+    <button onclick="switchLang()">🇩🇪 Deutsch / 🇬🇧 English</button>
+  </div>
 
-  <!-- 4) Navigation -->
+  <!-- 🔗 Navigation -->
   <nav>
-    <a href="#" class="active">Work</a>
-    <a href="#">About</a>
-    <a href="#">Notes</a>
-    <a href="#">Contact</a>
+    <a href="#" class="active">Arbeit</a>
+    <a href="#">Über mich</a>
+    <a href="#">Notizen</a>
+    <a href="#">Kontakt</a>
   </nav>
 
-  <!-- 5) Hero section -->
+  <!-- 🧠 HERO SECTION -->
   <section class="hero">
-    <h1>Hi. I'm Mehdi.<br>A Future IT Specialist.</h1>
+    <h1>
+      <span class="lang-de">Hi. Ich bin Mehdi.<br>Ein zukünftiger IT-Spezialist.</span>
+      <span class="lang-en hidden">Hi. I'm Mehdi.<br>A future IT specialist.</span>
+    </h1>
     <p>
-      I’m passionate about networks, systems, and solving real-world IT challenges
-      through code, configuration, and creativity.
+      <span class="lang-de">Ich liebe es, Netzwerke, Systeme und echte IT-Probleme zu lösen.</span>
+      <span class="lang-en hidden">I love working with networks, systems, and solving real-world IT problems.</span>
     </p>
   </section>
 
-  <!-- 6) Projects grid -->
+  <!-- 🧩 PROJECTS -->
   <section class="projects">
     <div class="card">
-      <h3>Backup Script</h3>
-      <p>Python tool to sync & version your files.</p>
+      <h3 class="lang-de">Backup-Skript</h3>
+      <h3 class="lang-en hidden">Backup Script</h3>
+      <p class="lang-de">Python-Tool zur Dateisicherung.</p>
+      <p class="lang-en hidden">Python tool to back up files.</p>
     </div>
     <div class="card">
-      <h3>Mini Portfolio</h3>
-      <p>HTML & CSS site (this very page!)</p>
+      <h3 class="lang-de">Mini-Portfolio</h3>
+      <h3 class="lang-en hidden">Mini Portfolio</h3>
+      <p class="lang-de">HTML & CSS Seite (diese Seite!)</p>
+      <p class="lang-en hidden">HTML & CSS site (this one!)</p>
     </div>
     <div class="card">
-      <h3>Network Lab</h3>
-      <p>Virtual LAN setup with Cisco Packet Tracer.</p>
+      <h3 class="lang-de">Netzwerk-Labor</h3>
+      <h3 class="lang-en hidden">Network Lab</h3>
+      <p class="lang-de">Virtuelles LAN mit Cisco.</p>
+      <p class="lang-en hidden">Virtual LAN using Cisco Packet Tracer.</p>
     </div>
     <div class="card">
-      <h3>Firewall Demo</h3>
-      <p>Simple iptables rules & port scanner.</p>
+      <h3 class="lang-de">Firewall-Demo</h3>
+      <h3 class="lang-en hidden">Firewall Demo</h3>
+      <p class="lang-de">iptables & Portscanner-Test.</p>
+      <p class="lang-en hidden">Simple iptables & port scanner demo.</p>
     </div>
   </section>
+
+  <!-- 🌍 JavaScript for toggling -->
+  <script>
+    let currentLang = 'de';
+    function switchLang() {
+      const deElements = document.querySelectorAll('.lang-de');
+      const enElements = document.querySelectorAll('.lang-en');
+
+      if (currentLang === 'de') {
+        deElements.forEach(el => el.classList.add('hidden'));
+        enElements.forEach(el => el.classList.remove('hidden'));
+        currentLang = 'en';
+      } else {
+        enElements.forEach(el => el.classList.add('hidden'));
+        deElements.forEach(el => el.classList.remove('hidden'));
+        currentLang = 'de';
+      }
+    }
+  </script>
 
 </body>
 </html>
