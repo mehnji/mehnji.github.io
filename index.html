@@ -9,112 +9,96 @@
     * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f8f2d4, #e2fbfa);
+      background: linear-gradient(135deg, #ffecf2 0%, #e0f7fa 50%, #e8f5e9 100%);
       color: #1f1f1f;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
+    .star { position: absolute; font-size: 1rem; color: rgba(255,255,255,0.8); user-select: none; }
+    .star:nth-child(1){ top: 10%; left: 15%; }
+    .star:nth-child(2){ top: 20%; left: 80%; font-size:1.2rem; }
+    .star:nth-child(3){ top: 50%; left: 40%; font-size:0.8rem; }
+    .star:nth-child(4){ top: 60%; left: 75%; font-size:1rem; }
 
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1.5rem 0;
+      display: flex; justify-content: center; gap: 2rem; padding: 1.5rem 0;
     }
     nav a {
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      color: #444;
-      font-weight: 600;
-      transition: background 0.3s, color 0.3s;
+      text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 999px;
+      border: 2px solid rgba(0,0,0,0.1); background: rgba(255,255,255,0.7);
+      color: #444; font-weight: 600; transition: background 0.3s, color 0.3s, border-color 0.3s;
     }
-    nav a:hover,
     nav a.active {
-      background: rgba(255,255,255,0.7);
-      color: #111;
+      background: rgba(255,255,255,1); border-color: rgba(0,0,0,0.2); color: #111;
     }
 
     .lang-switcher {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
+      position: absolute; top: 1rem; right: 1rem;
     }
-
     .lang-switcher button {
-      background: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 600;
+      background: #fff; border: 2px solid rgba(0,0,0,0.1);
+      padding: 0.75rem 1.5rem; border-radius: 999px; cursor: pointer;
+      font-weight: 700; transition: background 0.3s, border-color 0.3s;
+    }
+    .lang-switcher button:hover {
+      border-color: rgba(0,0,0,0.3);
     }
 
     .hero {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
+      text-align: center; padding: 4rem 1rem 2rem;
     }
-
     .hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      line-height: 1.1;
+      font-size: 3rem; font-weight: 800; line-height: 1.1;
     }
-
     .hero p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      font-weight: 400;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-top: 1rem; font-size: 1.2rem; font-weight: 400;
+      max-width: 600px; margin: 0 auto; color: #333;
     }
 
     .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      padding: 3rem 1rem;
-      max-width: 1000px;
-      margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem; padding: 3rem 1rem; max-width: 1000px; margin: 0 auto;
     }
-
     .card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      padding: 2rem 1rem;
-      text-align: center;
-      transition: transform 0.3s;
+      border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      padding: 2rem 1rem; text-align: center; transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     }
-
-    .card h3 { font-size: 1.4rem; font-weight: 600; }
-    .card p { font-size: 1rem; color: #555; }
-
-    .card:nth-child(1) { background: #ffe3e3; }
-    .card:nth-child(2) { background: #e3f7ff; }
-    .card:nth-child(3) { background: #e8ffe3; }
-    .card:nth-child(4) { background: #fff3e3; }
-
+    .card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .card p { font-size: 1rem; color: #555; margin: 0; }
+    .card:nth-child(1) { background: #ffdde1; }
+    .card:nth-child(2) { background: #ddeeff; }
+    .card:nth-child(3) { background: #ddffdd; }
+    .card:nth-child(4) { background: #fff5dd; }
     .hidden { display: none; }
   </style>
 </head>
 <body>
+  <div class="star">✦</div>
+  <div class="star">✧</div>
+  <div class="star">✦</div>
+  <div class="star">✧</div>
 
   <div class="lang-switcher">
     <button onclick="switchLang()">🇩🇪 Deutsch / 🇬🇧 English</button>
   </div>
 
   <nav>
-    <a href="#" class="active">Arbeit</a>
-    <a href="#">Über mich</a>
-    <a href="#">Notizen</a>
-    <a href="#">Kontakt</a>
+    <a href="#" class="active">
+      <span class="lang-de">Arbeit</span><span class="lang-en hidden">Work</span>
+    </a>
+    <a href="#">
+      <span class="lang-de">Über mich</span><span class="lang-en hidden">About</span>
+    </a>
+    <a href="#">
+      <span class="lang-de">Notizen</span><span class="lang-en hidden">Notes</span>
+    </a>
+    <a href="#">
+      <span class="lang-de">Kontakt</span><span class="lang-en hidden">Contact</span>
+    </a>
   </nav>
 
   <section class="hero">
@@ -130,48 +114,38 @@
 
   <section class="projects">
     <div class="card">
-      <h3 class="lang-de">Backup-Skript</h3>
-      <h3 class="lang-en hidden">Backup Script</h3>
-      <p class="lang-de">Python-Tool zur Dateisicherung.</p>
-      <p class="lang-en hidden">Python tool to back up files.</p>
+      <h3><span class="lang-de">Backup-Skript</span><span class="lang-en hidden">Backup Script</span></h3>
+      <p><span class="lang-de">Python-Tool zur Dateisicherung.</span><span class="lang-en hidden">Python tool to back up files.</span></p>
     </div>
     <div class="card">
-      <h3 class="lang-de">Mini-Portfolio</h3>
-      <h3 class="lang-en hidden">Mini Portfolio</h3>
-      <p class="lang-de">HTML & CSS Seite (diese Seite!)</p>
-      <p class="lang-en hidden">HTML & CSS site (this one!)</p>
+      <h3><span class="lang-de">Mini-Portfolio</span><span class="lang-en hidden">Mini Portfolio</span></h3>
+      <p><span class="lang-de">HTML & CSS Seite (diese Seite!)</span><span class="lang-en hidden">HTML & CSS site (this one!)</span></p>
     </div>
     <div class="card">
-      <h3 class="lang-de">Netzwerk-Labor</h3>
-      <h3 class="lang-en hidden">Network Lab</h3>
-      <p class="lang-de">Virtuelles LAN mit Cisco.</p>
-      <p class="lang-en hidden">Virtual LAN using Cisco Packet Tracer.</p>
+      <h3><span class="lang-de">Netzwerk-Labor</span><span class="lang-en hidden">Network Lab</span></h3>
+      <p><span class="lang-de">Virtuelles LAN mit Cisco.</span><span class="lang-en hidden">Virtual LAN using Cisco Packet Tracer.</span></p>
     </div>
     <div class="card">
-      <h3 class="lang-de">Firewall-Demo</h3>
-      <h3 class="lang-en hidden">Firewall Demo</h3>
-      <p class="lang-de">iptables & Portscanner-Test.</p>
-      <p class="lang-en hidden">Simple iptables & port scanner demo.</p>
+      <h3><span class="lang-de">Firewall-Demo</span><span class="lang-en hidden">Firewall Demo</span></h3>
+      <p><span class="lang-de">iptables & Portscanner-Test.</span><span class="lang-en hidden">Simple iptables & port scanner demo.</span></p>
     </div>
   </section>
 
   <script>
     let currentLang = 'de';
     function switchLang() {
-      const deElements = document.querySelectorAll('.lang-de');
-      const enElements = document.querySelectorAll('.lang-en');
-
-      if (currentLang === 'de') {
-        deElements.forEach(el => el.classList.add('hidden'));
-        enElements.forEach(el => el.classList.remove('hidden'));
-        currentLang = 'en';
+      const de = document.querySelectorAll('.lang-de');
+      const en = document.querySelectorAll('.lang-en');
+      if (currentLang==='de') {
+        de.forEach(e=>e.classList.add('hidden'));
+        en.forEach(e=>e.classList.remove('hidden'));
+        currentLang='en';
       } else {
-        enElements.forEach(el => el.classList.add('hidden'));
-        deElements.forEach(el => el.classList.remove('hidden'));
-        currentLang = 'de';
+        en.forEach(e=>e.classList.add('hidden'));
+        de.forEach(e=>e.classList.remove('hidden'));
+        currentLang='de';
       }
     }
   </script>
-
 </body>
 </html>
