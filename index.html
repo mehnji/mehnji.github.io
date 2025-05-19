@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mehdi Err — IT Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #fdf6e3, #e3f6fd);
+      color: #1a1a1a;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+    }
+    .project-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background-color: #ffffffaa;
+      padding: 1.5rem;
+      border-radius: 12px;
+      width: 200px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-  <h1>Hi, I’m Mehdi</h1>
-  <p>Aspiring IT-Ausbildung candidate</p>
-  <ul>
-    <li><a href="projects/project1.html">Project 1</a></li>
-    <li><a href="projects/project2.html">Project 2</a></li>
-  </ul>
+
+  <nav>
+    <a href="#">Work</a>
+    <a href="#">About</a>
+    <a href="#">Notes</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <h1>Hi. I'm Mehdi.<br>A Future IT Specialist.</h1>
+  <p>I’m passionate about working with networks, systems, and solving real-world IT problems.</p>
+
+  <div class="project-links">
+    <div class="project-card">
+      <h3>Project 1</h3>
+      <p>Python File Backup Tool</p>
+    </div>
+    <div class="project-card">
+      <h3>Project 2</h3>
+      <p>Simple HTML Portfolio Site</p>
+    </div>
+  </div>
+
 </body>
 </html>
