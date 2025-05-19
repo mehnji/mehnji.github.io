@@ -6,7 +6,6 @@
   <title>Mehdi Err — IT Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet" />
   <style>
-    /* Reset & Base */
     * { box-sizing: border-box; margin:0; padding:0; }
     html { scroll-behavior: smooth; }
     body {
@@ -18,10 +17,9 @@
       overflow-x: hidden;
     }
 
-    /* Star Twinkle (smaller sizes) */
     .star {
       position: absolute;
-      font-size: 2rem;
+      font-size: 4rem;
       color: rgba(80,80,80,0.8);
       filter: drop-shadow(0 0 4px rgba(0,0,0,0.2));
       user-select: none;
@@ -31,12 +29,11 @@
       0%,100% { opacity: 0.7; transform: scale(1); }
       50%      { opacity: 1;   transform: scale(1.2); }
     }
-    .star:nth-of-type(1) { top: 12%; left: 18%; font-size: 2rem; }
-    .star:nth-of-type(2) { top: 25%; left: 78%; font-size: 2.5rem; }
-    .star:nth-of-type(3) { top: 55%; left: 42%; font-size: 1.8rem; }
-    .star:nth-of-type(4) { top: 65%; left: 70%; font-size: 2.2rem; }
+    .star:nth-of-type(1) { top: 12%; left: 18%; font-size: 4rem; }
+    .star:nth-of-type(2) { top: 25%; left: 78%; font-size: 5rem; }
+    .star:nth-of-type(3) { top: 55%; left: 42%; font-size: 3.6rem; }
+    .star:nth-of-type(4) { top: 65%; left: 70%; font-size: 4.4rem; }
 
-    /* Navigation */
     nav {
       position: sticky; top:0; background: rgba(255,255,255,0.85);
       display: flex; justify-content: center; gap: 2rem; padding: 1rem 0; z-index: 10;
@@ -54,7 +51,6 @@
       width: 50%; height: 3px; background: #444; border-radius:2px;
     }
 
-    /* Language Switcher */
     .lang-switcher { position: absolute; top: 1rem; right: 1rem; }
     .lang-switcher button {
       background: #fff; border: 2px solid #ccc;
@@ -63,7 +59,6 @@
     }
     .lang-switcher button:hover { background: #f7f7f7; border-color: #999; }
 
-    /* Hero Section */
     .hero { text-align: center; padding: 5rem 1rem 2rem; }
     .hero h1 {
       font-size: 3rem; font-weight: 800; line-height: 1.1;
@@ -79,7 +74,6 @@
     }
     .hero button:hover { background:#222; }
 
-    /* Projects Section */
     .projects { padding: 4rem 1rem; max-width:1100px; margin: 0 auto; }
     .projects-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -102,8 +96,9 @@
     .card:nth-of-type(3) { background: linear-gradient(135deg, #d6ffd6, #e3ffe3); }
     .card:nth-of-type(4) { background: linear-gradient(135deg, #fff1d6, #fff8e3); }
 
-    /* Hidden class */
-    .hidden { display: none !important; }
+    /* Language handling */
+    .hidden { display: none !important; opacity: 0; transition: opacity 0.3s; }
+    .lang-de, .lang-en { transition: opacity 0.3s; }
   </style>
 </head>
 <body>
@@ -144,7 +139,6 @@
   </section>
 
   <script>
-    // On load, apply saved language
     document.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('lang');
       if (saved === 'en') {
@@ -153,13 +147,13 @@
         document.querySelectorAll('.lang-en').forEach(e => e.classList.remove('hidden'));
       }
     });
-    // Toggle language
+
     function switchLang() {
       const isDe = document.documentElement.lang === 'de';
       if (isDe) {
         document.documentElement.lang = 'en';
         localStorage.setItem('lang', 'en');
-        document.querySelectorAll('.lang-de').forEach(e => e.classList.add('hidden'));import com
+        document.querySelectorAll('.lang-de').forEach(e => e.classList.add('hidden'));
         document.querySelectorAll('.lang-en').forEach(e => e.classList.remove('hidden'));
       } else {
         document.documentElement.lang = 'de';
