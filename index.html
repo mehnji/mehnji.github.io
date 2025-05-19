@@ -51,7 +51,12 @@
       width: 50%; height: 3px; background: #444; border-radius:2px;
     }
 
-    .lang-switcher { position: absolute; top: 1rem; right: 1rem; }
+    .lang-switcher {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 999;
+    }
     .lang-switcher button {
       background: #fff; border: 2px solid #ccc;
       padding: 0.6rem 1.2rem; border-radius: 999px; cursor: pointer;
@@ -96,7 +101,6 @@
     .card:nth-of-type(3) { background: linear-gradient(135deg, #d6ffd6, #e3ffe3); }
     .card:nth-of-type(4) { background: linear-gradient(135deg, #fff1d6, #fff8e3); }
 
-    /* Language handling */
     .hidden { display: none !important; opacity: 0; transition: opacity 0.3s; }
     .lang-de, .lang-en { transition: opacity 0.3s; }
   </style>
@@ -134,34 +138,4 @@
       <div class="card"><div class="card-content"><h3><span class="lang-de">Backup-Skript</span><span class="lang-en hidden">Backup Script</span></h3><p><span class="lang-de">Python-Tool zur Dateisicherung.</span><span class="lang-en hidden">Python tool to back up files.</span></p></div></div>
       <div class="card"><div class="card-content"><h3><span class="lang-de">Mini-Portfolio</span><span class="lang-en hidden">Mini Portfolio</span></h3><p><span class="lang-de">HTML & CSS Seite (diese Seite!)</span><span class="lang-en hidden">HTML & CSS site (this one!)</span></p></div></div>
       <div class="card"><div class="card-content"><h3><span class="lang-de">Netzwerk-Labor</span><span class="lang-en hidden">Network Lab</span></h3><p><span class="lang-de">Virtuelles LAN mit Cisco.</span><span class="lang-en hidden">Virtual LAN using Cisco Packet Tracer.</span></p></div></div>
-      <div class="card"><div class="card-content"><h3><span class="lang-de">Firewall-Demo</span><span class="lang-en hidden">Firewall Demo</span></h3><p><span class="lang-de">iptables & Portscanner-Test.</span><span class="lang-en hidden">Simple iptables & port scanner demo.</span></p></div></div>
-    </div>
-  </section>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('lang');
-      if (saved === 'en') {
-        document.documentElement.lang = 'en';
-        document.querySelectorAll('.lang-de').forEach(e => e.classList.add('hidden'));
-        document.querySelectorAll('.lang-en').forEach(e => e.classList.remove('hidden'));
-      }
-    });
-
-    function switchLang() {
-      const isDe = document.documentElement.lang === 'de';
-      if (isDe) {
-        document.documentElement.lang = 'en';
-        localStorage.setItem('lang', 'en');
-        document.querySelectorAll('.lang-de').forEach(e => e.classList.add('hidden'));
-        document.querySelectorAll('.lang-en').forEach(e => e.classList.remove('hidden'));
-      } else {
-        document.documentElement.lang = 'de';
-        localStorage.setItem('lang', 'de');
-        document.querySelectorAll('.lang-en').forEach(e => e.classList.add('hidden'));
-        document.querySelectorAll('.lang-de').forEach(e => e.classList.remove('hidden'));
-      }
-    }
-  </script>
-</body>
-</html>
+      <
