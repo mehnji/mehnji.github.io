@@ -6,6 +6,7 @@
   <title>Mehdi Err — IT Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet" />
   <style>
+    /* Reset & Base */
     * { box-sizing: border-box; margin:0; padding:0; }
     html { scroll-behavior: smooth; }
     body {
@@ -138,4 +139,17 @@
       <div class="card"><div class="card-content"><h3><span class="lang-de">Backup-Skript</span><span class="lang-en hidden">Backup Script</span></h3><p><span class="lang-de">Python-Tool zur Dateisicherung.</span><span class="lang-en hidden">Python tool to back up files.</span></p></div></div>
       <div class="card"><div class="card-content"><h3><span class="lang-de">Mini-Portfolio</span><span class="lang-en hidden">Mini Portfolio</span></h3><p><span class="lang-de">HTML & CSS Seite (diese Seite!)</span><span class="lang-en hidden">HTML & CSS site (this one!)</span></p></div></div>
       <div class="card"><div class="card-content"><h3><span class="lang-de">Netzwerk-Labor</span><span class="lang-en hidden">Network Lab</span></h3><p><span class="lang-de">Virtuelles LAN mit Cisco.</span><span class="lang-en hidden">Virtual LAN using Cisco Packet Tracer.</span></p></div></div>
-      <
+      <div class="card"><div class="card-content"><h3><span class="lang-de">Tool XYZ</span><span class="lang-en hidden">Tool XYZ</span></h3><p><span class="lang-de">Kurze Beschreibung.</span><span class="lang-en hidden">Short description.</span></p></div></div>
+    </div>
+  </section>
+
+  <!-- Add script for language switching -->
+  <script>
+    function switchLang() {
+      const toEnglish = document.querySelector('.lang-en').classList.contains('hidden');
+      document.querySelectorAll('.lang-de').forEach(el => el.classList.toggle('hidden', toEnglish));
+      document.querySelectorAll('.lang-en').forEach(el => el.classList.toggle('hidden', !toEnglish));
+    }
+  </script>
+</body>
+</html>
