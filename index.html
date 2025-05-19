@@ -4,147 +4,137 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mehdi Err — IT Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet" />
   <style>
+    /* Reset & Base */
     * { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffecf2 0%, #e0f7fa 50%, #e8f5e9 100%);
+      background: linear-gradient(135deg, #ffeaf0 10%, #d4f1f9 60%, #e8f5e9 100%);
       color: #1f1f1f;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
-    .star { position: absolute; font-size: 1rem; color: rgba(255,255,255,0.8); user-select: none; }
-    .star:nth-child(1){ top: 10%; left: 15%; }
-    .star:nth-child(2){ top: 20%; left: 80%; font-size:1.2rem; }
-    .star:nth-child(3){ top: 50%; left: 40%; font-size:0.8rem; }
-    .star:nth-child(4){ top: 60%; left: 75%; font-size:1rem; }
+    
+    /* Star Twinkle */
+    .star { position: absolute; font-size: 1rem; color: rgba(255,255,255,0.8); user-select: none; animation: twinkle 4s infinite ease-in-out; }
+    @keyframes twinkle { 0%,100% { opacity:0.8; } 50% { opacity:1; }}
+    .star:nth-child(1){ top: 12%; left: 18%; }
+    .star:nth-child(2){ top: 25%; left: 78%; font-size:1.3rem; }
+    .star:nth-child(3){ top: 55%; left: 42%; font-size:0.9rem; }
+    .star:nth-child(4){ top: 65%; left: 70%; font-size:1.1rem; }
 
+    /* Navigation */
     nav {
-      display: flex; justify-content: center; gap: 2rem; padding: 1.5rem 0;
+      position: sticky; top:0; background: rgba(255,255,255,0.85);
+      display: flex; justify-content: center; gap: 2rem; padding: 1rem 0; z-index: 10;
+      backdrop-filter: blur(10px);
     }
     nav a {
-      text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 999px;
-      border: 2px solid rgba(0,0,0,0.1); background: rgba(255,255,255,0.7);
-      color: #444; font-weight: 600; transition: background 0.3s, color 0.3s, border-color 0.3s;
+      position: relative; text-decoration: none;
+      padding: 0.75rem 1.5rem; border-radius: 999px;
+      color: #444; font-weight: 500; transition: color 0.3s;
     }
-    nav a.active {
-      background: rgba(255,255,255,1); border-color: rgba(0,0,0,0.2); color: #111;
+    nav a:hover { color: #111; }
+    nav a.active::after {
+      content: '';
+      position: absolute; bottom: -0.25rem; left:50%; transform:translateX(-50%);
+      width: 50%; height: 3px; background: #444; border-radius:2px;
     }
 
-    .lang-switcher {
-      position: absolute; top: 1rem; right: 1rem;
-    }
+    /* Language Switcher */
+    .lang-switcher { position: absolute; top: 1rem; right: 1rem; }
     .lang-switcher button {
-      background: #fff; border: 2px solid rgba(0,0,0,0.1);
-      padding: 0.75rem 1.5rem; border-radius: 999px; cursor: pointer;
-      font-weight: 700; transition: background 0.3s, border-color 0.3s;
+      background: #fff; border: 2px solid #ccc;
+      padding: 0.6rem 1.2rem; border-radius: 999px; cursor: pointer;
+      font-weight:700; transition: background 0.3s, border-color 0.3s;
     }
-    .lang-switcher button:hover {
-      border-color: rgba(0,0,0,0.3);
-    }
+    .lang-switcher button:hover { background: #f7f7f7; border-color: #999; }
 
-    .hero {
-      text-align: center; padding: 4rem 1rem 2rem;
-    }
+    /* Hero Section */
+    .hero { text-align: center; padding: 5rem 1rem 2rem; }
     .hero h1 {
       font-size: 3rem; font-weight: 800; line-height: 1.1;
     }
     .hero p {
-      margin-top: 1rem; font-size: 1.2rem; font-weight: 400;
-      max-width: 600px; margin: 0 auto; color: #333;
+      margin-top: 1rem; font-size: 1.2rem; font-weight: 300;
+      max-width: 600px; margin: 1rem auto 2rem; color: #333;
     }
+    .hero button {
+      padding: 0.75rem 2rem; font-size: 1rem; font-weight:600;
+      border:none; border-radius:999px; background:#444; color:#fff;
+      cursor:pointer; transition: background 0.3s;
+    }
+    .hero button:hover { background:#222; }
 
-    .projects {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem; padding: 3rem 1rem; max-width: 1000px; margin: 0 auto;
+    /* Projects Section */
+    .projects { padding: 4rem 1rem; max-width:1100px; margin: 0 auto; }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.5rem;
     }
     .card {
-      border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      padding: 2rem 1rem; text-align: center; transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow:hidden; border-radius: 20px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
-    .card:hover {
-      transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    .card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    .card-content {
+      padding: 2rem 1.5rem; background: rgba(255,255,255,0.9);
+      height:100%; display:flex; flex-direction:column; justify-content:center;
     }
-    .card h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .card p { font-size: 1rem; color: #555; margin: 0; }
-    .card:nth-child(1) { background: #ffdde1; }
-    .card:nth-child(2) { background: #ddeeff; }
-    .card:nth-child(3) { background: #ddffdd; }
-    .card:nth-child(4) { background: #fff5dd; }
+    .card h3 { margin-bottom:0.5rem; font-size:1.4rem; font-weight:700; }
+    .card p { font-size:1rem; color:#555; flex-grow:1; }
+    .card:nth-child(1) { background: linear-gradient(135deg, #ffd6e8, #ffe3f2); }
+    .card:nth-child(2) { background: linear-gradient(135deg, #d6f0ff, #e3f7ff); }
+    .card:nth-child(3) { background: linear-gradient(135deg, #d6ffd6, #e3ffe3); }
+    .card:nth-child(4) { background: linear-gradient(135deg, #fff1d6, #fff8e3); }
+
     .hidden { display: none; }
   </style>
 </head>
 <body>
-  <div class="star">✦</div>
-  <div class="star">✧</div>
-  <div class="star">✦</div>
-  <div class="star">✧</div>
+  <!-- Stars -->
+  <div class="star">✦</div><div class="star">✧</div><div class="star">✦</div><div class="star">✧</div>
 
+  <!-- Language Switch -->
   <div class="lang-switcher">
     <button onclick="switchLang()">🇩🇪 Deutsch / 🇬🇧 English</button>
   </div>
 
+  <!-- Navigation -->
   <nav>
-    <a href="#" class="active">
-      <span class="lang-de">Arbeit</span><span class="lang-en hidden">Work</span>
-    </a>
-    <a href="#">
-      <span class="lang-de">Über mich</span><span class="lang-en hidden">About</span>
-    </a>
-    <a href="#">
-      <span class="lang-de">Notizen</span><span class="lang-en hidden">Notes</span>
-    </a>
-    <a href="#">
-      <span class="lang-de">Kontakt</span><span class="lang-en hidden">Contact</span>
-    </a>
+    <a href="#work" class="active"><span class="lang-de">Arbeit</span><span class="lang-en hidden">Work</span></a>
+    <a href="#about"><span class="lang-de">Über mich</span><span class="lang-en hidden">About</span></a>
+    <a href="#notes"><span class="lang-de">Notizen</span><span class="lang-en hidden">Notes</span></a>
+    <a href="#contact"><span class="lang-de">Kontakt</span><span class="lang-en hidden">Contact</span></a>
   </nav>
 
+  <!-- Hero -->
   <section class="hero">
-    <h1>
-      <span class="lang-de">Hi. Ich bin Mehdi.<br>Ein zukünftiger IT-Spezialist.</span>
-      <span class="lang-en hidden">Hi. I'm Mehdi.<br>A future IT specialist.</span>
-    </h1>
-    <p>
-      <span class="lang-de">Ich liebe es, Netzwerke, Systeme und echte IT-Probleme zu lösen.</span>
-      <span class="lang-en hidden">I love working with networks, systems, and solving real-world IT problems.</span>
-    </p>
+    <h1><span class="lang-de">Hi. Ich bin Mehdi.<br>Ein zukünftiger IT-Spezialist.</span><span class="lang-en hidden">Hi. I'm Mehdi.<br>A future IT specialist.</span></h1>
+    <p><span class="lang-de">Ich liebe es, Netzwerke, Systeme und echte IT-Probleme zu lösen.</span><span class="lang-en hidden">I love working with networks, systems, and solving real-world IT problems.</span></p>
+    <button onclick="document.getElementById('work').scrollIntoView()"><span class="lang-de">Projekte ansehen</span><span class="lang-en hidden">View Projects</span></button>
   </section>
 
-  <section class="projects">
-    <div class="card">
-      <h3><span class="lang-de">Backup-Skript</span><span class="lang-en hidden">Backup Script</span></h3>
-      <p><span class="lang-de">Python-Tool zur Dateisicherung.</span><span class="lang-en hidden">Python tool to back up files.</span></p>
-    </div>
-    <div class="card">
-      <h3><span class="lang-de">Mini-Portfolio</span><span class="lang-en hidden">Mini Portfolio</span></h3>
-      <p><span class="lang-de">HTML & CSS Seite (diese Seite!)</span><span class="lang-en hidden">HTML & CSS site (this one!)</span></p>
-    </div>
-    <div class="card">
-      <h3><span class="lang-de">Netzwerk-Labor</span><span class="lang-en hidden">Network Lab</span></h3>
-      <p><span class="lang-de">Virtuelles LAN mit Cisco.</span><span class="lang-en hidden">Virtual LAN using Cisco Packet Tracer.</span></p>
-    </div>
-    <div class="card">
-      <h3><span class="lang-de">Firewall-Demo</span><span class="lang-en hidden">Firewall Demo</span></h3>
-      <p><span class="lang-de">iptables & Portscanner-Test.</span><span class="lang-en hidden">Simple iptables & port scanner demo.</span></p>
+  <!-- Projects -->
+  <section id="work" class="projects">
+    <div class="projects-grid">
+      <div class="card"><div class="card-content"><h3><span class="lang-de">Backup-Skript</span><span class="lang-en hidden">Backup Script</span></h3><p><span class="lang-de">Python-Tool zur Dateisicherung.</span><span class="lang-en hidden">Python tool to back up files.</span></p></div></div>
+      <div class="card"><div class="card-content"><h3><span class="lang-de">Mini-Portfolio</span><span class="lang-en hidden">Mini Portfolio</span></h3><p><span class="lang-de">HTML & CSS Seite (diese Seite!)</span><span class="lang-en hidden">HTML & CSS site (this one!)</span></p></div></div>
+      <div class="card"><div class="card-content"><h3><span class="lang-de">Netzwerk-Labor</span><span class="lang-en hidden">Network Lab</span></h3><p><span class="lang-de">Virtuelles LAN mit Cisco.</span><span class="lang-en hidden">Virtual LAN using Cisco Packet Tracer.</span></p></div></div>
+      <div class="card"><div class="card-content"><h3><span class="lang-de">Firewall-Demo</span><span class="lang-en hidden">Firewall Demo</span></h3><p><span class="lang-de">iptables & Portscanner-Test.</span><span class="lang-en hidden">Simple iptables & port scanner demo.</span></p></div></div>
     </div>
   </section>
 
   <script>
     let currentLang = 'de';
     function switchLang() {
-      const de = document.querySelectorAll('.lang-de');
-      const en = document.querySelectorAll('.lang-en');
-      if (currentLang==='de') {
-        de.forEach(e=>e.classList.add('hidden'));
-        en.forEach(e=>e.classList.remove('hidden'));
-        currentLang='en';
-      } else {
-        en.forEach(e=>e.classList.add('hidden'));
-        de.forEach(e=>e.classList.remove('hidden'));
-        currentLang='de';
-      }
+      document.querySelectorAll('.lang-de').forEach(e=>e.classList.toggle('hidden'));
+      document.querySelectorAll('.lang-en').forEach(e=>e.classList.toggle('hidden'));
+      currentLang = currentLang === 'de' ? 'en':'de';
     }
   </script>
 </body>
